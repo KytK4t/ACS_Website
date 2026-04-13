@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Albert Crew Sailing</title>
+  <meta name="description" content="Contactez Albert Crew Sailing — sponsoring, presse, équipage et partenariats.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/logos/logo-navy.png">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logos/logo-white.png" alt="Albert Crew Sailing">
+        <span>Albert Crew Sailing<small>EST. 2025 · PARIS</small></span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="association.html">L'association</a></li>
+        <li><a href="regates.html">Régates</a></li>
+        <li><a href="sponsors.html">Partenaires</a></li>
+        <li><a href="contact.html" class="nav-cta active">Nous contacter →</a></li>
+      </ul>
+      <button class="nav-burger" aria-label="Menu">
+        <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <div class="eyebrow on-dark">Contact</div>
+      <h1>Parlons.<br>Une idée, un projet,<br>une envie.</h1>
+      <p>Sponsors, journalistes, étudiants d'Albert School, partenaires associatifs — écrivez-nous. Nous répondons sous 48h.</p>
+    </div>
+  </header>
+
+  <!-- CONTACT FORM -->
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- LEFT : INFOS -->
+        <div class="reveal">
+          <div class="eyebrow">Nous joindre</div>
+          <h2 style="font-size:clamp(2rem,4vw,2.75rem);line-height:1.1;">Une équipe,<br>trois adresses.</h2>
+          <p style="color:var(--navy-4);margin-top:20px;">
+            Selon la nature de votre demande, un interlocuteur dédié vous répondra.
+          </p>
+
+          <div style="margin-top:40px;display:flex;flex-direction:column;gap:24px;">
+            <div style="padding:24px;border:1px solid var(--line);border-radius:16px;">
+              <div class="eyebrow" style="margin-bottom:8px;">Partenariats</div>
+              <h3 style="font-size:1.1rem;">Sponsoring &amp; entreprises</h3>
+              <a href="mailto:partenariats@albertcrewsailing.com" style="display:block;margin-top:8px;color:var(--navy);font-weight:500;text-decoration:none;">partenariats@albertcrewsailing.com</a>
+            </div>
+            <div style="padding:24px;border:1px solid var(--line);border-radius:16px;">
+              <div class="eyebrow" style="margin-bottom:8px;">Médias</div>
+              <h3 style="font-size:1.1rem;">Presse &amp; interviews</h3>
+              <a href="mailto:presse@albertcrewsailing.com" style="display:block;margin-top:8px;color:var(--navy);font-weight:500;text-decoration:none;">presse@albertcrewsailing.com</a>
+            </div>
+            <div style="padding:24px;border:1px solid var(--line);border-radius:16px;">
+              <div class="eyebrow" style="margin-bottom:8px;">Général</div>
+              <h3 style="font-size:1.1rem;">Équipage &amp; autres</h3>
+              <a href="mailto:contact@albertcrewsailing.com" style="display:block;margin-top:8px;color:var(--navy);font-weight:500;text-decoration:none;">contact@albertcrewsailing.com</a>
+            </div>
+          </div>
+
+          <div style="margin-top:40px;padding-top:32px;border-top:1px solid var(--line);">
+            <div class="eyebrow" style="margin-bottom:12px;">Adresse</div>
+            <p style="color:var(--navy-4);font-size:0.95rem;line-height:1.6;">
+              Albert Crew Sailing<br>
+              c/o Albert School<br>
+              Paris · France
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT : FORM -->
+        <div class="reveal">
+          <form class="form" action="mailto:contact@albertcrewsailing.com" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="firstname">Prénom</label>
+                <input type="text" id="firstname" name="firstname" placeholder="Votre prénom" required>
+              </div>
+              <div class="form-field">
+                <label for="lastname">Nom</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Votre nom" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="vous@entreprise.com" required>
+              </div>
+              <div class="form-field">
+                <label for="company">Entreprise / École</label>
+                <input type="text" id="company" name="company" placeholder="Votre organisation">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="subject">Je vous contacte pour</label>
+              <select id="subject" name="subject" required>
+                <option value="">— Choisissez un sujet —</option>
+                <option value="sponsoring">Devenir partenaire / sponsor</option>
+                <option value="pack-moussaillon">Pack Moussaillon (1 000 €)</option>
+                <option value="pack-matelot">Pack Matelot (2 500 €)</option>
+                <option value="pack-capitaine">Pack Capitaine (5 000 €)</option>
+                <option value="pack-amiral">Pack Amiral (10 000 €)</option>
+                <option value="presse">Demande presse / interview</option>
+                <option value="kit-presse">Kit presse</option>
+                <option value="equipage">Rejoindre l'équipage</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Votre message</label>
+              <textarea id="message" name="message" placeholder="Parlez-nous de votre projet, vos questions, vos attentes..." required></textarea>
+            </div>
+
+            <div style="display:flex;align-items:flex-start;gap:12px;font-size:0.85rem;color:var(--navy-4);">
+              <input type="checkbox" id="rgpd" name="rgpd" required style="margin-top:3px;">
+              <label for="rgpd" style="font-size:0.85rem;font-weight:400;text-transform:none;letter-spacing:0;">
+                J'accepte que mes données soient utilisées pour traiter ma demande. Elles ne seront jamais transmises à des tiers.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;margin-top:8px;">
+              Envoyer le message
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ RAPIDE -->
+  <section class="section-cloud">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">Questions fréquentes</div>
+        <h2>On répond vite.</h2>
+      </div>
+      <div class="grid-3 reveal">
+        <div class="card">
+          <h3 style="font-size:1.1rem;">Quel délai de réponse ?</h3>
+          <p style="margin-top:12px;">48h en semaine pour les demandes partenariats et presse. Moins en période de régate.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.1rem;">Je peux rejoindre l'équipage ?</h3>
+          <p style="margin-top:12px;">Oui, si tu es étudiant à Albert School. Écris-nous à contact@albertcrewsailing.com.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.1rem;">Packs sur mesure ?</h3>
+          <p style="margin-top:12px;">Absolument. Nos 4 packs sont une base — nous construisons l'offre qui vous correspond.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logos/logo-white.png" alt="Albert Crew Sailing">
+          <p>L'équipage de voile d'Albert School. Créé en 2025, direction la 45ème édition du Challenge Spi Dauphine.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="association.html">L'association</a></li>
+            <li><a href="regates.html">Régates</a></li>
+            <li><a href="sponsors.html">Partenaires</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Partenaires</h4>
+          <ul>
+            <li><a href="sponsors.html">Devenir partenaire</a></li>
+            <li><a href="sponsors.html#packs">Packs sponsoring</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Suivez-nous</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="mailto:contact@albertcrewsailing.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 Albert Crew Sailing — Tous droits réservés.</div>
+        <div>Albert School · Paris · France</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

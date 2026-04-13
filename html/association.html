@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'association — Albert Crew Sailing</title>
+  <meta name="description" content="Albert Crew Sailing, l'association de voile d'Albert School. Découvrez notre histoire, notre mission et l'équipage qui porte les couleurs d'Albert School sur les plus grandes régates étudiantes d'Europe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/logos/logo-navy.png">
+  <style>
+    /* ===== ASSOCIATION PAGE — EDITORIAL OVERRIDES ===== */
+
+    /* --- SECTION 1: Full-screen hero --- */
+    .asso-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--navy);
+      color: var(--white);
+      overflow: hidden;
+    }
+    .asso-hero-img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .asso-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      filter: grayscale(0.2) contrast(1.05);
+    }
+    .asso-hero-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(13,27,42,0.5) 0%, rgba(13,27,42,0.7) 60%, var(--navy) 100%);
+    }
+    .asso-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 32px;
+    }
+    .asso-hero-content .eyebrow.on-dark {
+      justify-content: center;
+      margin-bottom: 32px;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+    }
+    .asso-hero-content h1 {
+      font-size: clamp(3rem, 8vw, 7rem);
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 32px;
+      letter-spacing: -0.03em;
+    }
+    .asso-hero-lead {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: rgba(255,255,255,0.7);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .asso-hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .asso-hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+
+    /* --- SECTION 2: Notre histoire — editorial split --- */
+    .asso-story {
+      padding: 140px 0;
+    }
+    .asso-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .asso-story-text .eyebrow { margin-bottom: 28px; }
+    .asso-story-text h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 32px;
+      line-height: 1.05;
+    }
+    .asso-story-text p {
+      font-size: 1.05rem;
+      color: var(--navy-4);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .asso-story-text p:last-child { margin-bottom: 0; }
+    .asso-story-visual {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--navy);
+    }
+    .asso-story-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .asso-story-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,27,42,0.3), transparent 50%);
+    }
+    .asso-story-stat {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      z-index: 2;
+      color: var(--white);
+    }
+    .asso-story-stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .asso-story-stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-top: 8px;
+    }
+
+    /* --- SECTION 3: Mission & Vision --- */
+    .asso-mv {
+      padding: 120px 0;
+      background: var(--cloud);
+    }
+    .asso-mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .asso-mv-block {
+      padding-left: 32px;
+      border-left: 3px solid var(--navy);
+    }
+    .asso-mv-block .eyebrow { margin-bottom: 20px; }
+    .asso-mv-block h3 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+      color: var(--navy-4);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .asso-mv-block .highlight {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--navy);
+      line-height: 1.4;
+      display: block;
+    }
+    .asso-mv-block .highlight em {
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    /* --- SECTION 4: Notre école --- */
+    .asso-school {
+      padding: 140px 0;
+    }
+    .asso-school-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .asso-school-text .eyebrow { margin-bottom: 28px; }
+    .asso-school-text h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 32px;
+      line-height: 1.05;
+    }
+    .asso-school-text p {
+      font-size: 1.05rem;
+      color: var(--navy-4);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .asso-school-logo {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+    .asso-school-logo img {
+      height: 48px;
+      width: auto;
+    }
+    .asso-school-logo span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .asso-school-visual {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--cloud);
+    }
+    .asso-school-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --- SECTION 5: Le bureau --- */
+    .asso-bureau {
+      padding: 120px 0;
+      background: var(--cloud);
+    }
+    .asso-bureau .section-header { margin-bottom: 60px; }
+    .bureau-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .bureau-member {
+      text-align: center;
+    }
+    .bureau-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--navy);
+      overflow: hidden;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .bureau-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .bureau-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.25);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    .bureau-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .bureau-role {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy-4);
+      font-weight: 500;
+    }
+
+    /* --- Bandeau de fin --- */
+    .asso-bottom-nav {
+      padding: 60px 0;
+      border-top: 1px solid var(--line);
+    }
+    .asso-bottom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .asso-bottom-link {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      transition: all 0.4s var(--ease);
+    }
+    .asso-bottom-link:hover {
+      border-color: var(--navy);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .asso-bottom-link-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .asso-bottom-link-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+    }
+    .asso-bottom-link-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .asso-bottom-link-sub {
+      font-size: 0.8rem;
+      color: var(--navy-4);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+    .asso-bottom-link-arrow {
+      margin-left: auto;
+      color: var(--navy-4);
+      transition: transform 0.3s var(--ease);
+    }
+    .asso-bottom-link:hover .asso-bottom-link-arrow {
+      transform: translateX(4px);
+      color: var(--navy);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .asso-story-grid,
+      .asso-school-grid,
+      .asso-mv-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .bureau-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+    @media (max-width: 768px) {
+      .asso-hero-content h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
+      .asso-story, .asso-school { padding: 80px 0; }
+      .asso-mv { padding: 80px 0; }
+      .asso-bureau { padding: 80px 0; }
+      .bureau-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      .asso-bottom-grid {
+        grid-template-columns: 1fr;
+      }
+      .asso-mv-block {
+        padding-left: 24px;
+      }
+      .asso-story-visual,
+      .asso-school-visual {
+        aspect-ratio: 3/4;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logos/logo-white.png" alt="Albert Crew Sailing">
+        <span>Albert Crew Sailing<small>EST. 2025 · PARIS</small></span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="association.html" class="active">L'association</a></li>
+        <li><a href="regates.html">Régates</a></li>
+        <li><a href="sponsors.html">Partenaires</a></li>
+        <li><a href="contact.html" class="nav-cta">Nous contacter →</a></li>
+      </ul>
+      <button class="nav-burger" aria-label="Menu">
+        <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================== -->
+  <!-- SECTION 1 — HERO PLEIN ÉCRAN  -->
+  <!-- ============================== -->
+  <header class="asso-hero">
+    <div class="asso-hero-img">
+      <img src="assets/images/equipage.jpg" alt="Équipage Albert Crew Sailing">
+    </div>
+    <div class="asso-hero-content">
+      <div class="eyebrow on-dark" style="justify-content:center;">Albert Crew Sailing</div>
+      <h1>L'Association</h1>
+      <p class="asso-hero-lead">L'équipage étudiant d'Albert School sur les plus grandes régates d'Europe.</p>
+    </div>
+    <div class="asso-hero-scroll">Scroll</div>
+  </header>
+
+  <!-- ============================== -->
+  <!-- SECTION 2 — NOTRE HISTOIRE    -->
+  <!-- ============================== -->
+  <section class="asso-story">
+    <div class="container">
+      <div class="asso-story-grid">
+        <div class="asso-story-text reveal">
+          <div class="eyebrow">Notre histoire</div>
+          <h2>De l'idée à la mer,<br>en moins d'un an.</h2>
+          <p>
+            Tout commence en juin 2025, autour d'une idée simple : et si Albert School
+            avait son propre équipage de voile ? Pas une asso de plus — un vrai projet sportif,
+            collectif, ambitieux. Le genre de truc qu'on ne fait qu'une fois dans une vie étudiante.
+          </p>
+          <p>
+            En quelques semaines, l'équipage se construit. 30 étudiants se rassemblent,
+            un skipper professionnel rejoint l'aventure, et l'inscription au Challenge Spi Dauphine
+            est bouclée. Le pari est lancé.
+          </p>
+          <p>
+            Première participation, première gifle d'air marin, premier classement :
+            12<sup>e</sup> sur 50 équipages. Pour une asso née quelques mois plus tôt,
+            le signal est clair — Albert Crew Sailing n'est pas là pour faire de la figuration.
+          </p>
+          <p>
+            Aujourd'hui, l'ambition est intacte et plus grande que jamais :
+            viser le top 10, structurer l'asso pour durer, et transformer cette aventure
+            en quelque chose que chaque promotion d'Albert School pourra porter fièrement.
+          </p>
+        </div>
+        <div class="asso-story-visual reveal">
+          <img src="assets/images/photo-1.jpg" alt="L'équipage Albert Crew Sailing">
+          <div class="asso-story-stat">
+            <div class="asso-story-stat-value">12<sup style="font-size:0.5em;opacity:0.6;">e</sup>/50</div>
+            <div class="asso-story-stat-label">Spi Dauphine 44 · 1re participation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 3 — MISSION & VISION  -->
+  <!-- ============================== -->
+  <section class="asso-mv">
+    <div class="container">
+      <div class="asso-mv-grid">
+        <div class="asso-mv-block reveal">
+          <div class="eyebrow">Notre mission</div>
+          <h3>
+            Représenter Albert School dans l'une des plus grandes régates étudiantes d'Europe,
+            tout en créant un projet fédérateur qui donne envie aux étudiants de s'engager,
+            de construire et de naviguer ensemble.
+          </h3>
+          <span class="highlight">ACS, c'est le pont entre la vie à l'école et une aventure qui nous dépasse.</span>
+        </div>
+        <div class="asso-mv-block reveal">
+          <div class="eyebrow">Notre vision</div>
+          <h3>
+            Faire d'Albert Crew Sailing une référence parmi les associations étudiantes de voile en France,
+            reconnue pour la qualité de son équipage, la solidité de ses partenariats,
+            et la fierté qu'elle inspire à ceux qui portent ses couleurs.
+          </h3>
+          <span class="highlight"><em>Parce que les meilleures décisions se prennent quand le vent tourne.</em></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 4 — NOTRE ÉCOLE       -->
+  <!-- ============================== -->
+  <section class="asso-school">
+    <div class="container">
+      <div class="asso-school-grid">
+        <div class="asso-school-visual reveal">
+          <img src="assets/logos/albert-school.jpeg" alt="Albert School Paris">
+        </div>
+        <div class="asso-school-text reveal">
+          <div class="eyebrow">Notre école</div>
+          <h2>Nés dans l'écosystème<br>Albert School.</h2>
+          <p>
+            Albert School est une école de business et de data basée à Paris,
+            fondée avec le soutien de Xavier Niel et un partenariat académique avec l'École
+            des Mines de Paris. Des profils hybrides tech et business, formés pour innover.
+          </p>
+          <p>
+            L'ADN d'Albert — data, entrepreneuriat, ambition — coule dans les veines
+            d'Albert Crew Sailing. Ce n'est pas un hasard si l'asso est née ici :
+            construire un projet de zéro, itérer vite, viser haut. C'est exactement
+            ce qu'on apprend en cours.
+          </p>
+          <p>
+            ACS est le prolongement naturel de l'esprit Albert School :
+            la performance collective, la prise de risque, et la volonté de représenter
+            quelque chose de plus grand que soi.
+          </p>
+          <div class="asso-school-logo">
+            <img src="assets/logos/logo-albert.png" alt="Logo Albert School">
+            <span>Albert School · Paris</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 5 — LE BUREAU         -->
+  <!-- ============================== -->
+  <section class="asso-bureau">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">Le bureau</div>
+        <h2>L'équipage à terre.</h2>
+      </div>
+      <div class="bureau-grid">
+        <div class="bureau-member reveal">
+          <div class="bureau-photo">
+            <div class="bureau-photo-placeholder">PR</div>
+          </div>
+          <div class="bureau-name">Prénom Nom</div>
+          <div class="bureau-role">Président</div>
+        </div>
+        <div class="bureau-member reveal">
+          <div class="bureau-photo">
+            <div class="bureau-photo-placeholder">CV</div>
+          </div>
+          <div class="bureau-name">Constantin Vuillier</div>
+          <div class="bureau-role">Trésorier</div>
+        </div>
+        <div class="bureau-member reveal">
+          <div class="bureau-photo">
+            <div class="bureau-photo-placeholder">CM</div>
+          </div>
+          <div class="bureau-name">Prénom Nom</div>
+          <div class="bureau-role">Responsable Communication</div>
+        </div>
+        <div class="bureau-member reveal">
+          <div class="bureau-photo">
+            <div class="bureau-photo-placeholder">SP</div>
+          </div>
+          <div class="bureau-name">Prénom Nom</div>
+          <div class="bureau-role">Responsable Sponsoring</div>
+        </div>
+        <div class="bureau-member reveal">
+          <div class="bureau-photo">
+            <div class="bureau-photo-placeholder">SK</div>
+          </div>
+          <div class="bureau-name">Prénom Nom</div>
+          <div class="bureau-role">Skipper</div>
+        </div>
+        <div class="bureau-member reveal">
+          <div class="bureau-photo">
+            <div class="bureau-photo-placeholder">LG</div>
+          </div>
+          <div class="bureau-name">Prénom Nom</div>
+          <div class="bureau-role">Responsable Logistique</div>
+        </div>
+        <div class="bureau-member reveal">
+          <div class="bureau-photo">
+            <div class="bureau-photo-placeholder">EV</div>
+          </div>
+          <div class="bureau-name">Prénom Nom</div>
+          <div class="bureau-role">Responsable Événementiel</div>
+        </div>
+        <div class="bureau-member reveal">
+          <div class="bureau-photo">
+            <div class="bureau-photo-placeholder">CM</div>
+          </div>
+          <div class="bureau-name">Prénom Nom</div>
+          <div class="bureau-role">Chef d'équipe CM</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BANDEAU DE FIN                 -->
+  <!-- ============================== -->
+  <section class="asso-bottom-nav">
+    <div class="container">
+      <div class="asso-bottom-grid">
+        <a href="regates.html" class="asso-bottom-link reveal">
+          <div class="asso-bottom-link-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M2 20s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M4 18V9l8-7 8 7v9"/><path d="M12 2v16"/></svg>
+          </div>
+          <div>
+            <div class="asso-bottom-link-text">Régates</div>
+            <div class="asso-bottom-link-sub">Le Challenge Spi Dauphine 2026</div>
+          </div>
+          <svg class="asso-bottom-link-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="sponsors.html" class="asso-bottom-link reveal">
+          <div class="asso-bottom-link-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7L12 3 4 7v10l8 4 8-4V7z"/><path d="M12 12l8-5M12 12v9M12 12L4 7"/></svg>
+          </div>
+          <div>
+            <div class="asso-bottom-link-text">Nos Partenaires</div>
+            <div class="asso-bottom-link-sub">Packs de sponsoring &amp; contreparties</div>
+          </div>
+          <svg class="asso-bottom-link-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="contact.html" class="asso-bottom-link reveal">
+          <div class="asso-bottom-link-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <div>
+            <div class="asso-bottom-link-text">Nous Contacter</div>
+            <div class="asso-bottom-link-sub">Une question ? Un projet ? Écrivez-nous</div>
+          </div>
+          <svg class="asso-bottom-link-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logos/logo-white.png" alt="Albert Crew Sailing">
+          <p>L'équipage de voile d'Albert School. Créé en 2025, direction la 45ème édition du Challenge Spi Dauphine.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="association.html">L'association</a></li>
+            <li><a href="regates.html">Régates</a></li>
+            <li><a href="sponsors.html">Partenaires</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Partenaires</h4>
+          <ul>
+            <li><a href="sponsors.html">Devenir partenaire</a></li>
+            <li><a href="sponsors.html#packs">Packs sponsoring</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Suivez-nous</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="mailto:contact@albertcrewsailing.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Albert Crew Sailing — Tous droits réservés.</div>
+        <div>Albert School · Paris · France</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

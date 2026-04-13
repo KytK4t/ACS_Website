@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Régates — Challenge Spi Dauphine · Albert Crew Sailing</title>
+  <meta name="description" content="Le Challenge Spi Dauphine — la régate étudiante de référence en Méditerranée depuis 1981. Découvrez le format, l'histoire et les résultats d'Albert Crew Sailing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/logos/logo-navy.png">
+  <style>
+    /* ===== REGATES PAGE — EDITORIAL OVERRIDES ===== */
+
+    /* --- SECTION 1: Full-screen hero --- */
+    .reg-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--navy);
+      color: var(--white);
+      overflow: hidden;
+    }
+    .reg-hero-img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .reg-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      filter: grayscale(0.15) contrast(1.05);
+    }
+    .reg-hero-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(13,27,42,0.45) 0%, rgba(13,27,42,0.65) 60%, var(--navy) 100%);
+    }
+    .reg-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      padding: 0 32px;
+    }
+    .reg-hero-content .eyebrow.on-dark {
+      justify-content: center;
+      margin-bottom: 32px;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+    }
+    .reg-hero-content h1 {
+      font-size: clamp(3rem, 8vw, 7rem);
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 32px;
+      letter-spacing: -0.03em;
+    }
+    .reg-hero-lead {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      color: rgba(255,255,255,0.7);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+    .reg-hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .reg-hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+
+    /* --- SECTION 2: Qu'est-ce que le Spi --- */
+    .reg-about {
+      padding: 140px 0;
+    }
+    .reg-about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .reg-about-text .eyebrow { margin-bottom: 28px; }
+    .reg-about-text h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 32px;
+      line-height: 1.05;
+    }
+    .reg-about-text p {
+      font-size: 1.05rem;
+      color: var(--navy-4);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .reg-about-text p:last-child { margin-bottom: 0; }
+    .reg-about-media {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+    .reg-about-media-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--navy-4);
+      font-weight: 600;
+    }
+    .reg-about-media-logos {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .reg-about-media-logos span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--navy-3);
+      white-space: nowrap;
+    }
+    .reg-about-visual {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--navy);
+    }
+    .reg-about-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .reg-about-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,27,42,0.3), transparent 50%);
+    }
+
+    /* --- SECTION 3: Format de la compétition --- */
+    .reg-format {
+      padding: 140px 0;
+      background: var(--cloud);
+    }
+    .reg-format .section-header { margin-bottom: 80px; }
+    .reg-format-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+    .reg-format-block:last-child { margin-bottom: 0; }
+    .reg-format-block.reverse { direction: rtl; }
+    .reg-format-block.reverse > * { direction: ltr; }
+    .reg-format-text .eyebrow { margin-bottom: 20px; }
+    .reg-format-text h3 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+    .reg-format-text p {
+      font-size: 1.05rem;
+      color: var(--navy-4);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .reg-format-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+      padding: 12px 20px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 100px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+    .reg-format-visual {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--cloud);
+    }
+    .reg-format-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .reg-format-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,27,42,0.25), transparent 50%);
+    }
+
+    /* --- SECTION 4: ACS en compétition --- */
+    .reg-acs {
+      padding: 140px 0;
+    }
+    .reg-acs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .reg-acs-result {
+      margin-bottom: 32px;
+    }
+    .reg-acs-result-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      color: var(--navy);
+    }
+    .reg-acs-result-value sup {
+      font-size: 0.35em;
+      opacity: 0.5;
+      vertical-align: super;
+    }
+    .reg-acs-result-sub {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--navy-4);
+      font-weight: 600;
+      margin-top: 12px;
+    }
+    .reg-acs-text h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.8rem);
+      margin-bottom: 28px;
+      line-height: 1.08;
+    }
+    .reg-acs-text p {
+      font-size: 1.05rem;
+      color: var(--navy-4);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .reg-acs-visual {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--navy);
+    }
+    .reg-acs-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .reg-acs-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,27,42,0.35), transparent 50%);
+    }
+
+    /* --- SECTION 5: Countdown --- */
+    .reg-countdown {
+      padding: 120px 0;
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .reg-countdown::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at top right, rgba(65,90,119,0.35), transparent 60%),
+        radial-gradient(ellipse at bottom left, rgba(27,38,59,0.8), transparent 70%);
+    }
+    .reg-countdown > * { position: relative; z-index: 1; }
+    .reg-countdown .eyebrow.on-dark {
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .reg-countdown h2 {
+      color: var(--white);
+      margin-bottom: 60px;
+    }
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 100px;
+    }
+    .countdown-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--white);
+    }
+    .countdown-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 12px;
+      font-weight: 500;
+    }
+    .countdown-sep {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.2);
+      line-height: 1;
+      align-self: flex-start;
+      padding-top: 6px;
+    }
+    .countdown-info {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .countdown-info strong {
+      color: var(--white);
+    }
+
+    /* --- Bandeau de fin --- */
+    .reg-bottom-nav {
+      padding: 60px 0;
+      border-top: 1px solid var(--line);
+    }
+    .reg-bottom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .reg-bottom-link {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      transition: all 0.4s var(--ease);
+    }
+    .reg-bottom-link:hover {
+      border-color: var(--navy);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .reg-bottom-link-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .reg-bottom-link-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+    }
+    .reg-bottom-link-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .reg-bottom-link-sub {
+      font-size: 0.8rem;
+      color: var(--navy-4);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+    .reg-bottom-link-arrow {
+      margin-left: auto;
+      color: var(--navy-4);
+      transition: transform 0.3s var(--ease);
+    }
+    .reg-bottom-link:hover .reg-bottom-link-arrow {
+      transform: translateX(4px);
+      color: var(--navy);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .reg-about-grid,
+      .reg-format-block,
+      .reg-acs-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .reg-format-block.reverse { direction: ltr; }
+    }
+    @media (max-width: 768px) {
+      .reg-hero-content h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
+      .reg-about, .reg-format, .reg-acs { padding: 80px 0; }
+      .reg-countdown { padding: 80px 0; }
+      .countdown-grid { gap: 16px; flex-wrap: wrap; }
+      .countdown-unit { min-width: 70px; }
+      .countdown-sep { display: none; }
+      .reg-bottom-grid { grid-template-columns: 1fr; }
+      .reg-format-block { margin-bottom: 60px; }
+      .reg-about-visual,
+      .reg-format-visual,
+      .reg-acs-visual { aspect-ratio: 3/4; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logos/logo-white.png" alt="Albert Crew Sailing">
+        <span>Albert Crew Sailing<small>EST. 2025 · PARIS</small></span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="association.html">L'association</a></li>
+        <li><a href="regates.html" class="active">Régates</a></li>
+        <li><a href="sponsors.html">Partenaires</a></li>
+        <li><a href="contact.html" class="nav-cta">Nous contacter →</a></li>
+      </ul>
+      <button class="nav-burger" aria-label="Menu">
+        <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================== -->
+  <!-- SECTION 1 — HERO PLEIN ÉCRAN  -->
+  <!-- ============================== -->
+  <header class="reg-hero">
+    <div class="reg-hero-img">
+      <img src="assets/images/regate.webp" alt="Régates en Méditerranée">
+    </div>
+    <div class="reg-hero-content">
+      <div class="eyebrow on-dark" style="justify-content:center;">Depuis 1981</div>
+      <h1>Le Challenge<br>Spi Dauphine</h1>
+      <p class="reg-hero-lead">La régate étudiante de référence en Méditerranée — une semaine, 50 bateaux, des centaines d'étudiants venus de toute l'Europe.</p>
+    </div>
+    <div class="reg-hero-scroll">Scroll</div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- SECTION 2 — QU'EST-CE QUE LE SPI DAUPHINE -->
+  <!-- ========================================== -->
+  <section class="reg-about">
+    <div class="container">
+      <div class="reg-about-grid">
+        <div class="reg-about-text reveal">
+          <div class="eyebrow">L'événement</div>
+          <h2>La plus grande régate étudiante d'Europe continentale.</h2>
+          <p>
+            Créé en 1981 par des étudiants de l'Université Paris-Dauphine, le Challenge
+            Spi Dauphine est aujourd'hui la 2<sup>e</sup> régate étudiante itinérante de France
+            et l'une des plus grandes courses étudiantes de voile en Europe.
+          </p>
+          <p>
+            Chaque année en avril, les meilleures grandes écoles et universités se retrouvent
+            en Méditerranée pour une semaine de compétition alliant performance nautique
+            et défis à terre. Des équipages venus de France, de Suisse, d'Espagne, d'Italie,
+            d'Angleterre et des Pays-Bas se mesurent dans un esprit de compétition,
+            de solidarité et de fair-play.
+          </p>
+          <p>
+            L'événement bénéficie d'une couverture médiatique nationale, portée par des
+            partenaires de premier plan.
+          </p>
+          <div class="reg-about-media">
+            <span class="reg-about-media-label">Couverture média</span>
+            <div class="reg-about-media-logos">
+              <span>Nautical Channel</span>
+              <span>·</span>
+              <span>Virgin Radio</span>
+              <span>·</span>
+              <span>Le Figaro</span>
+            </div>
+          </div>
+        </div>
+        <div class="reg-about-visual reveal">
+          <img src="assets/images/challenge-spi-2026.webp" alt="Challenge Spi Dauphine">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 3 — FORMAT DE LA COMPÉTITION       -->
+  <!-- ========================================== -->
+  <section class="reg-format">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">Le format</div>
+        <h2>Le format de la compétition.</h2>
+      </div>
+
+      <!-- Bloc 1 — En Mer -->
+      <div class="reg-format-block">
+        <div class="reg-format-text reveal">
+          <div class="eyebrow">En mer · La régate</div>
+          <h3>70% du classement général.</h3>
+          <p>
+            Les équipages s'affrontent en Méditerranée à bord d'Osiris habitables,
+            voiliers de croisière-course polyvalents. Le format est mixte : 4 courses
+            réparties entre parcours côtier, parcours au large et buoy racing.
+          </p>
+          <p>
+            Chaque manche est chronométrée, chaque point compte. Sur l'eau, c'est
+            la cohésion d'équipage et la prise de décision sous pression qui font la différence.
+            La régate représente 70% du classement général.
+          </p>
+          <div class="reg-format-badge">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18"><path d="M2 20s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M4 18V9l8-7 8 7v9"/><path d="M12 2v16"/></svg>
+            70% — Performance en mer
+          </div>
+        </div>
+        <div class="reg-format-visual reveal">
+          <img src="assets/images/spii.jpg" alt="Régate en Méditerranée">
+        </div>
+      </div>
+
+      <!-- Bloc 2 — À Terre -->
+      <div class="reg-format-block reverse">
+        <div class="reg-format-text reveal">
+          <div class="eyebrow">À terre · Challenge Multisport</div>
+          <h3>30% du classement général.</h3>
+          <p>
+            En parallèle de la régate, les équipes s'affrontent sur le village dans
+            des épreuves collectives : rugby, football, beach volley, handball, kayak...
+          </p>
+          <p>
+            Les points gagnés au Challenge Multisport comptent pour 30% du classement
+            général. La victoire finale se construit sur l'eau ET sur terre —
+            un format unique qui valorise l'esprit d'équipe autant que la performance nautique.
+          </p>
+          <div class="reg-format-badge">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18"><path d="M13 2l-3 8h4l-3 8"/><circle cx="12" cy="12" r="10"/></svg>
+            30% — Challenge Multisport
+          </div>
+        </div>
+        <div class="reg-format-visual reveal">
+          <img src="assets/images/cm-course.webp" alt="Challenge Multisport">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 4 — ACS EN COMPÉTITION             -->
+  <!-- ========================================== -->
+  <section class="reg-acs">
+    <div class="container">
+      <div class="reg-acs-grid">
+        <div class="reg-acs-text reveal">
+          <div class="eyebrow">ACS au Spi Dauphine</div>
+          <div class="reg-acs-result">
+            <div class="reg-acs-result-value">12<sup>e</sup>/50</div>
+            <div class="reg-acs-result-sub">Équipages · Spi Dauphine 44</div>
+          </div>
+          <h2>Top 25% dès la première participation.</h2>
+          <p>
+            En 2025, Albert Crew Sailing débarque au Challenge Spi Dauphine pour la toute
+            première fois. Aucune expérience collective en régate, un équipage construit
+            en quelques mois — et pourtant, 12<sup>e</sup> sur 50 au classement général.
+          </p>
+          <p>
+            Ce résultat est un signal fort. Pour la 45<sup>e</sup> édition à Marina di Imperia,
+            l'ambition est claire : viser le top 10 et s'installer durablement parmi les
+            meilleurs équipages étudiants de France.
+          </p>
+        </div>
+        <div class="reg-acs-visual reveal">
+          <img src="assets/images/photo-1.jpg" alt="Équipage Albert Crew Sailing">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 5 — COUNTDOWN                      -->
+  <!-- ========================================== -->
+  <section class="reg-countdown">
+    <div class="eyebrow on-dark" style="justify-content:center;">Prochaine édition</div>
+    <h2>Le compte à rebours est lancé.</h2>
+    <div class="countdown-grid" id="countdown">
+      <div class="countdown-unit">
+        <div class="countdown-value" id="cd-days">--</div>
+        <div class="countdown-label">Jours</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-value" id="cd-hours">--</div>
+        <div class="countdown-label">Heures</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-value" id="cd-mins">--</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-value" id="cd-secs">--</div>
+        <div class="countdown-label">Secondes</div>
+      </div>
+    </div>
+    <p class="countdown-info">
+      <strong>45<sup>e</sup> édition — 18 avril 2026</strong><br>
+      Marina di Imperia, Italie
+    </p>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- BANDEAU DE FIN                              -->
+  <!-- ========================================== -->
+  <section class="reg-bottom-nav">
+    <div class="container">
+      <div class="reg-bottom-grid">
+        <a href="association.html" class="reg-bottom-link reveal">
+          <div class="reg-bottom-link-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a6 6 0 016-6h0a6 6 0 016 6v2"/><circle cx="17" cy="7" r="3"/><path d="M21 21v-1a5 5 0 00-4-4.9"/></svg>
+          </div>
+          <div>
+            <div class="reg-bottom-link-text">L'Association</div>
+            <div class="reg-bottom-link-sub">Notre histoire, notre équipage</div>
+          </div>
+          <svg class="reg-bottom-link-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="sponsors.html" class="reg-bottom-link reveal">
+          <div class="reg-bottom-link-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7L12 3 4 7v10l8 4 8-4V7z"/><path d="M12 12l8-5M12 12v9M12 12L4 7"/></svg>
+          </div>
+          <div>
+            <div class="reg-bottom-link-text">Nos Partenaires</div>
+            <div class="reg-bottom-link-sub">Packs de sponsoring &amp; contreparties</div>
+          </div>
+          <svg class="reg-bottom-link-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="contact.html" class="reg-bottom-link reveal">
+          <div class="reg-bottom-link-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <div>
+            <div class="reg-bottom-link-text">Nous Contacter</div>
+            <div class="reg-bottom-link-sub">Une question ? Écrivez-nous</div>
+          </div>
+          <svg class="reg-bottom-link-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logos/logo-white.png" alt="Albert Crew Sailing">
+          <p>L'équipage de voile d'Albert School. Créé en 2025, direction la 45ème édition du Challenge Spi Dauphine.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="association.html">L'association</a></li>
+            <li><a href="regates.html">Régates</a></li>
+            <li><a href="sponsors.html">Partenaires</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Partenaires</h4>
+          <ul>
+            <li><a href="sponsors.html">Devenir partenaire</a></li>
+            <li><a href="sponsors.html#packs">Packs sponsoring</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Suivez-nous</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="mailto:contact@albertcrewsailing.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Albert Crew Sailing — Tous droits réservés.</div>
+        <div>Albert School · Paris · France</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // ===== COUNTDOWN — 18 avril 2026, 09:00 CET =====
+    (function() {
+      var target = new Date('2026-04-18T09:00:00+02:00').getTime();
+      var daysEl = document.getElementById('cd-days');
+      var hoursEl = document.getElementById('cd-hours');
+      var minsEl = document.getElementById('cd-mins');
+      var secsEl = document.getElementById('cd-secs');
+
+      function pad(n) { return n < 10 ? '0' + n : n; }
+
+      function tick() {
+        var now = Date.now();
+        var diff = target - now;
+        if (diff <= 0) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minsEl.textContent = '00';
+          secsEl.textContent = '00';
+          return;
+        }
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        daysEl.textContent = pad(d);
+        hoursEl.textContent = pad(h);
+        minsEl.textContent = pad(m);
+        secsEl.textContent = pad(s);
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
+</body>
+</html>

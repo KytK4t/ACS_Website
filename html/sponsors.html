@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partenaires — Albert Crew Sailing</title>
+  <meta name="description" content="Découvrez les partenaires d'Albert Crew Sailing et nos packs de sponsoring. Associez votre marque à la plus grande régate étudiante d'Europe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/logos/logo-navy.png">
+  <style>
+    /* ===== PARTENAIRES PAGE — EDITORIAL OVERRIDES ===== */
+
+    /* --- SECTION 1: Full-screen hero --- */
+    .sp-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--navy);
+      color: var(--white);
+      overflow: hidden;
+    }
+    .sp-hero-img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .sp-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+      filter: grayscale(0.2) contrast(1.05);
+    }
+    .sp-hero-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(13,27,42,0.5) 0%, rgba(13,27,42,0.7) 60%, var(--navy) 100%);
+    }
+    .sp-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 32px;
+    }
+    .sp-hero-content .eyebrow.on-dark {
+      justify-content: center;
+      margin-bottom: 32px;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+    }
+    .sp-hero-content h1 {
+      font-size: clamp(3rem, 8vw, 7rem);
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 32px;
+      letter-spacing: -0.03em;
+    }
+    .sp-hero-lead {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: rgba(255,255,255,0.7);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .sp-hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .sp-hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+
+    /* --- SECTION 2: Ils nous font confiance --- */
+    .sp-trust {
+      padding: 120px 0;
+    }
+    .sp-trust .section-header {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 60px;
+    }
+    .sp-logos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .sp-logo-item {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+      transition: all 0.4s var(--ease);
+    }
+    .sp-logo-item:hover {
+      border-color: var(--navy);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .sp-logo-item img {
+      max-height: 56px;
+      max-width: 160px;
+      object-fit: contain;
+    }
+
+    /* --- SECTION 3: Chiffres clés --- */
+    .sp-numbers {
+      padding: 100px 0;
+      background: var(--navy);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .sp-numbers::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at top right, rgba(65,90,119,0.35), transparent 60%),
+        radial-gradient(ellipse at bottom left, rgba(27,38,59,0.8), transparent 70%);
+    }
+    .sp-numbers > * { position: relative; z-index: 1; }
+    .sp-numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .sp-number {
+      padding: 48px 24px;
+      text-align: center;
+      border-right: 1px solid var(--line-dark);
+    }
+    .sp-number:last-child { border-right: none; }
+    .sp-number-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .sp-number-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+    }
+
+    /* --- SECTION 4: Packs --- */
+    .sp-packs {
+      padding: 140px 0;
+    }
+    .sp-packs .section-header {
+      margin-bottom: 60px;
+    }
+    .sp-packs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .sp-pack {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 40px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s var(--ease);
+      position: relative;
+      background: var(--white);
+    }
+    .sp-pack:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--navy);
+    }
+    .sp-pack.featured {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+    .sp-pack-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      color: var(--navy);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--navy);
+      white-space: nowrap;
+    }
+    .sp-pack-tier {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--navy-4);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .sp-pack.featured .sp-pack-tier { color: rgba(255,255,255,0.5); }
+    .sp-pack-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 28px;
+      line-height: 1.1;
+    }
+    .sp-pack.featured .sp-pack-name { color: var(--white); }
+    .sp-pack-features {
+      flex: 1;
+      margin-bottom: 28px;
+    }
+    .sp-pack-feat {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.85rem;
+      color: var(--navy-2);
+      line-height: 1.5;
+    }
+    .sp-pack.featured .sp-pack-feat {
+      color: rgba(255,255,255,0.8);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .sp-pack-feat:last-child { border-bottom: none; }
+    .sp-pack-feat svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      stroke: var(--navy);
+    }
+    .sp-pack.featured .sp-pack-feat svg { stroke: var(--white); }
+    .sp-packs-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    /* --- SECTION 5: Au-delà du sponsoring --- */
+    .sp-beyond {
+      padding: 140px 0;
+      background: var(--navy);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .sp-beyond::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at top left, rgba(65,90,119,0.3), transparent 60%),
+        radial-gradient(ellipse at bottom right, rgba(27,38,59,0.6), transparent 70%);
+    }
+    .sp-beyond > * { position: relative; z-index: 1; }
+    .sp-beyond .section-header p { color: rgba(255,255,255,0.65); }
+    .sp-beyond-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .sp-beyond-card {
+      padding: 40px 32px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.03);
+      transition: all 0.4s var(--ease);
+    }
+    .sp-beyond-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-4px);
+    }
+    .sp-beyond-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .sp-beyond-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--white);
+    }
+    .sp-beyond-card h3 {
+      color: var(--white);
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+    .sp-beyond-card p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    /* --- SECTION 6: CTA --- */
+    .sp-cta {
+      padding: 120px 0;
+      text-align: center;
+    }
+    .sp-cta h2 {
+      margin-bottom: 20px;
+    }
+    .sp-cta p {
+      font-size: 1.1rem;
+      color: var(--navy-4);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .sp-cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* --- Bandeau de fin --- */
+    .sp-bottom-nav {
+      padding: 60px 0;
+      border-top: 1px solid var(--line);
+    }
+    .sp-bottom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .sp-bottom-link {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      transition: all 0.4s var(--ease);
+    }
+    .sp-bottom-link:hover {
+      border-color: var(--navy);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .sp-bottom-link-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .sp-bottom-link-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+    }
+    .sp-bottom-link-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .sp-bottom-link-sub {
+      font-size: 0.8rem;
+      color: var(--navy-4);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+    .sp-bottom-link-arrow {
+      margin-left: auto;
+      color: var(--navy-4);
+      transition: transform 0.3s var(--ease);
+    }
+    .sp-bottom-link:hover .sp-bottom-link-arrow {
+      transform: translateX(4px);
+      color: var(--navy);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .sp-packs-grid { grid-template-columns: repeat(2, 1fr); }
+      .sp-beyond-grid { grid-template-columns: repeat(2, 1fr); }
+      .sp-numbers-grid { grid-template-columns: repeat(3, 1fr); }
+      .sp-number:nth-child(3) { border-right: none; }
+      .sp-number:nth-child(4),
+      .sp-number:nth-child(5) { border-top: 1px solid var(--line-dark); }
+      .sp-logos-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .sp-hero-content h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
+      .sp-trust, .sp-packs, .sp-cta { padding: 80px 0; }
+      .sp-beyond { padding: 80px 0; }
+      .sp-numbers { padding: 60px 0; }
+      .sp-packs-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .sp-beyond-grid { grid-template-columns: 1fr; }
+      .sp-numbers-grid {
+        grid-template-columns: 1fr;
+        border-top: none;
+      }
+      .sp-number {
+        border-right: none;
+        border-bottom: 1px solid var(--line-dark);
+        padding: 32px 24px;
+      }
+      .sp-number:last-child { border-bottom: none; }
+      .sp-logos-grid { grid-template-columns: repeat(2, 1fr); }
+      .sp-bottom-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logos/logo-white.png" alt="Albert Crew Sailing">
+        <span>Albert Crew Sailing<small>EST. 2025 · PARIS</small></span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="association.html">L'association</a></li>
+        <li><a href="regates.html">Régates</a></li>
+        <li><a href="sponsors.html" class="active">Partenaires</a></li>
+        <li><a href="contact.html" class="nav-cta">Nous contacter →</a></li>
+      </ul>
+      <button class="nav-burger" aria-label="Menu">
+        <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================== -->
+  <!-- SECTION 1 — HERO PLEIN ÉCRAN  -->
+  <!-- ============================== -->
+  <header class="sp-hero">
+    <div class="sp-hero-img">
+      <img src="assets/images/regate-hero.webp" alt="Régates en Méditerranée">
+    </div>
+    <div class="sp-hero-content">
+      <div class="eyebrow on-dark" style="justify-content:center;">Nos partenaires</div>
+      <h1>Ils nous<br>soutiennent</h1>
+      <p class="sp-hero-lead">Un grand merci à ceux qui rendent l'aventure possible.</p>
+    </div>
+    <div class="sp-hero-scroll">Scroll</div>
+  </header>
+
+  <!-- ======================================= -->
+  <!-- SECTION 2 — ILS NOUS FONT CONFIANCE    -->
+  <!-- ======================================= -->
+  <section class="sp-trust">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+        <div class="eyebrow" style="justify-content:center;">Ils nous font confiance</div>
+        <h2>Nos partenaires actuels.</h2>
+      </div>
+      <div class="sp-logos-grid reveal">
+        <a href="#" class="sp-logo-item" target="_blank" rel="noopener"><img src="assets/sponsors/etxea.png" alt="Etxea Capital"></a>
+        <a href="#" class="sp-logo-item" target="_blank" rel="noopener"><img src="assets/sponsors/etic.png" alt="ETIC"></a>
+        <a href="#" class="sp-logo-item" target="_blank" rel="noopener"><img src="assets/sponsors/suvy.png" alt="Suvy"></a>
+        <a href="#" class="sp-logo-item" target="_blank" rel="noopener"><img src="assets/sponsors/optimerh.png" alt="Optime RH"></a>
+        <a href="#" class="sp-logo-item" target="_blank" rel="noopener"><img src="assets/sponsors/centric.png" alt="Centric"></a>
+        <a href="#" class="sp-logo-item" target="_blank" rel="noopener"><img src="assets/sponsors/leev.png" alt="Leev"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 3 — CHIFFRES CLÉS     -->
+  <!-- ============================== -->
+  <section class="sp-numbers">
+    <div class="container">
+      <div class="sp-numbers-grid reveal">
+        <div class="sp-number">
+          <div class="sp-number-value">1000+</div>
+          <div class="sp-number-label">Étudiants au Spi Dauphine</div>
+        </div>
+        <div class="sp-number">
+          <div class="sp-number-value">50</div>
+          <div class="sp-number-label">Équipages en compétition</div>
+        </div>
+        <div class="sp-number">
+          <div class="sp-number-value">7j</div>
+          <div class="sp-number-label">Couverture TV, presse, radio</div>
+        </div>
+        <div class="sp-number">
+          <div class="sp-number-value">30</div>
+          <div class="sp-number-label">Membres ACS</div>
+        </div>
+        <div class="sp-number">
+          <div class="sp-number-value">50k+</div>
+          <div class="sp-number-label">Portée réseaux sociaux</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 4 — PACKS PARTENARIAT -->
+  <!-- ============================== -->
+  <section class="sp-packs" id="packs">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">Packs partenariat</div>
+        <h2>Nos packs partenariat.</h2>
+      </div>
+      <div class="sp-packs-grid reveal">
+
+        <!-- ÉQUIPIER -->
+        <div class="sp-pack">
+          <div class="sp-pack-tier">Pack</div>
+          <div class="sp-pack-name">Équipier</div>
+          <div class="sp-pack-features">
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Logo sur les supports de communication
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Mention sur nos réseaux sociaux
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Présence sur le site web ACS
+            </div>
+          </div>
+        </div>
+
+        <!-- SKIPPER -->
+        <div class="sp-pack">
+          <div class="sp-pack-tier">Pack</div>
+          <div class="sp-pack-name">Skipper</div>
+          <div class="sp-pack-features">
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Tout le pack Équipier
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <strong>Logo sur le bateau</strong>
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Posts dédiés sur les réseaux
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Invitation événement ACS
+            </div>
+          </div>
+        </div>
+
+        <!-- CAPITAINE (featured) -->
+        <div class="sp-pack featured">
+          <div class="sp-pack-badge">Recommandé</div>
+          <div class="sp-pack-tier">Pack</div>
+          <div class="sp-pack-name">Capitaine</div>
+          <div class="sp-pack-features">
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Tout le pack Skipper
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <strong>Naming &amp; co-création de contenu</strong>
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Accès recrutement étudiants
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Partenariat pluriannuel possible
+            </div>
+          </div>
+        </div>
+
+        <!-- AMIRAL -->
+        <div class="sp-pack">
+          <div class="sp-pack-tier">Pack</div>
+          <div class="sp-pack-name">Amiral</div>
+          <div class="sp-pack-features">
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Tout le pack Capitaine
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <strong>Partenaire titre — visibilité maximale</strong>
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Invitation VIP Spi Dauphine
+            </div>
+            <div class="sp-pack-feat">
+              <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Captation vidéo dédiée
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sp-packs-actions reveal">
+        <a href="#" class="btn btn-dark">
+          Télécharger le dossier sponsoring
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </a>
+        <a href="contact.html" class="btn btn-ghost-navy">
+          Nous contacter
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================= -->
+  <!-- SECTION 5 — AU-DELÀ DU SIMPLE SPONSORING -->
+  <!-- ======================================= -->
+  <section class="sp-beyond">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow on-dark">Nos contreparties</div>
+        <h2>Au-delà du simple sponsoring.</h2>
+        <p>Le sponsoring étudiant, ce n'est pas juste un logo sur une voile. Nous construisons de vraies relations à long terme.</p>
+      </div>
+      <div class="sp-beyond-grid">
+
+        <div class="sp-beyond-card reveal">
+          <div class="sp-beyond-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Consulting étudiant</h3>
+          <p>Missions de consulting sur-mesure réalisées par notre équipe d'étudiants Albert School × Mines Paris.</p>
+        </div>
+
+        <div class="sp-beyond-card reveal">
+          <div class="sp-beyond-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Événement à l'amphithéâtre</h3>
+          <p>Location de l'amphithéâtre Albert School pour vos conférences, afterworks ou sessions de recrutement.</p>
+        </div>
+
+        <div class="sp-beyond-card reveal">
+          <div class="sp-beyond-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7h-3a2 2 0 01-2-2V2"/><path d="M21 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V4a2 2 0 012-2h10l6 5z"/></svg>
+          </div>
+          <h3>Accès CV &amp; recrutement</h3>
+          <p>CV-thèque privilégiée, présentation aux étudiants, cocktail recruteurs. Votre marque employeur, activée.</p>
+        </div>
+
+        <div class="sp-beyond-card reveal">
+          <div class="sp-beyond-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          </div>
+          <h3>Contenu vidéo dédié</h3>
+          <p>Captation, interview, reportage custom pendant la régate. Reprise des contenus pour votre communication interne et externe.</p>
+        </div>
+
+        <div class="sp-beyond-card reveal">
+          <div class="sp-beyond-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h3>Invitation Spi Dauphine</h3>
+          <p>Invitations VIP sur place pendant l'événement, accès village partenaires, soirées d'équipage.</p>
+        </div>
+
+        <div class="sp-beyond-card reveal">
+          <div class="sp-beyond-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          </div>
+          <h3>Partenariat pluriannuel</h3>
+          <p>Pour les packs Capitaine et Amiral, construction d'un partenariat durable sur plusieurs saisons.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 6 — CTA SPONSORING    -->
+  <!-- ============================== -->
+  <section class="sp-cta">
+    <div class="container">
+      <div class="reveal">
+        <div class="eyebrow" style="justify-content:center;">Rejoignez l'aventure</div>
+        <h2>Vous souhaitez associer votre marque<br>à l'aventure ACS ?</h2>
+        <p>Parlons ensemble de votre projet de partenariat. Nous répondons sous 48h.</p>
+        <div class="sp-cta-actions">
+          <a href="#" class="btn btn-dark">
+            Télécharger le dossier sponsoring
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+          <a href="contact.html" class="btn btn-ghost-navy">
+            Nous contacter
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BANDEAU DE FIN                 -->
+  <!-- ============================== -->
+  <section class="sp-bottom-nav">
+    <div class="container">
+      <div class="sp-bottom-grid">
+        <a href="association.html" class="sp-bottom-link reveal">
+          <div class="sp-bottom-link-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a6 6 0 016-6h0a6 6 0 016 6v2"/><circle cx="17" cy="7" r="3"/><path d="M21 21v-1a5 5 0 00-4-4.9"/></svg>
+          </div>
+          <div>
+            <div class="sp-bottom-link-text">L'Association</div>
+            <div class="sp-bottom-link-sub">Notre histoire, notre équipage</div>
+          </div>
+          <svg class="sp-bottom-link-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="regates.html" class="sp-bottom-link reveal">
+          <div class="sp-bottom-link-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M2 20s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M4 18V9l8-7 8 7v9"/><path d="M12 2v16"/></svg>
+          </div>
+          <div>
+            <div class="sp-bottom-link-text">Régates</div>
+            <div class="sp-bottom-link-sub">Le Challenge Spi Dauphine 2026</div>
+          </div>
+          <svg class="sp-bottom-link-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="contact.html" class="sp-bottom-link reveal">
+          <div class="sp-bottom-link-icon">
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <div>
+            <div class="sp-bottom-link-text">Nous Contacter</div>
+            <div class="sp-bottom-link-sub">Une question ? Écrivez-nous</div>
+          </div>
+          <svg class="sp-bottom-link-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logos/logo-white.png" alt="Albert Crew Sailing">
+          <p>L'équipage de voile d'Albert School. Créé en 2025, direction la 45ème édition du Challenge Spi Dauphine.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="association.html">L'association</a></li>
+            <li><a href="regates.html">Régates</a></li>
+            <li><a href="sponsors.html">Partenaires</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Partenaires</h4>
+          <ul>
+            <li><a href="sponsors.html">Devenir partenaire</a></li>
+            <li><a href="sponsors.html#packs">Packs sponsoring</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Suivez-nous</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="mailto:contact@albertcrewsailing.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Albert Crew Sailing — Tous droits réservés.</div>
+        <div>Albert School · Paris · France</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
